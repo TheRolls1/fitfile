@@ -1,0 +1,34 @@
+package com.fitlife.service;
+
+import com.fitlife.model.Usuario;
+import com.fitlife.repository.UserRepositorio;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class UsuarioServicio {
+    @Autowired
+    private UsuarioRepositorio userRepository;
+
+    public List<Usuario> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    public Usuario createUser(Usuario user) {
+        return userRepository.save(user);
+    }
+
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    public Usuario updateUser(Long id, User userDetails) {
+        Usuario user = userRepository.findById(id).orElseThrow();
+        user.setName(userDetails.getName());
+        user.setEmail(userDetails.getEmail());
+        user.setPassword(userDetails.getContraseña());
+        user.setRole(userDetails.getRol());
+        return userRepository.save(user);
+    }
+}

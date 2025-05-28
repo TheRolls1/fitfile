@@ -1,0 +1,34 @@
+package com.fitlife.controller;
+
+import com.fitlife.model.Usuario;
+import com.fitlife.service.UsuarioServicio;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/users")
+public class ControladorUsuario {
+    @Autowired
+    private UsuarioServicio userService;
+
+    @GetMapping
+    public List<Usuario> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
+    @PostMapping
+    public Usuario createUser(@RequestBody Usuario user) {
+        return userService.createUser(user);
+    }
+
+    @PutMapping("/{id}")
+    public Usuario updateUser(@PathVariable Long id, @RequestBody Usuario user) {
+        return userService.updateUser(id, user);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+    }
+}

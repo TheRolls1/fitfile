@@ -1,0 +1,24 @@
+package com.fitlife.controller;
+
+import com.fitlife.model.Usuario;
+import com.fitlife.repository.UsuarioRepositorio;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/autenticacion")
+public class AutenticacionControlador {
+
+    @Autowired
+    private UsuarioRepositorio usuarioRepository;
+
+    @Autowired
+    private PasswordEncoder encriptador;
+
+    @PostMapping("/registro")
+    public Usuario registrar(@RequestBody Usuario usuario) {
+        usuario.setContraseña(encriptador.encode(usuario.getContraseña()));
+        return usuarioRepository.save(usuario);
+    }
+}
