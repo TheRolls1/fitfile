@@ -1,0 +1,8 @@
+@RestController
+@RequestMapping("/cliente")
+public class ClienteController {
+    @GetMapping("/progreso")
+    public String progreso() {
+        return "Registrar progreso del cliente (mock)";
+    }
+}

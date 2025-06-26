@@ -1,0 +1,11 @@
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Sesion {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private LocalDateTime fecha;
+    private String estado; // pendiente, completada, etc.
+}

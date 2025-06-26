@@ -1,0 +1,12 @@
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+
+public class Entrenador {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nombre;
+    private String especialidad;
+}

@@ -1,0 +1,8 @@
+@RestController
+@RequestMapping("/coordinador")
+public class CoordinadorController {
+    @GetMapping("/entrenadores")
+    public String verEntrenadores() {
+        return "Listado de entrenadores (en construcción)";
+    }
+}

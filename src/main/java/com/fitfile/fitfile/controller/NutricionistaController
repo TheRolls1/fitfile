@@ -1,0 +1,8 @@
+@RestController
+@RequestMapping("/nutricionista")
+public class NutricionistaController {
+    @GetMapping("/planes")
+    public String verPlanesNutricionales() {
+        return "Planes nutricionales (en desarrollo)";
+    }
+}
